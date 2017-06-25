@@ -1,13 +1,13 @@
-#### React with electron and firebase backend samples
+### React with electron and firebase backend samples
 
 - Template for a react electron app with a firebase backend
 
 
 ***
 
-#### Firebase configuration
+### Firebase configuration
 
-  1. Copy and paste firebase db config into `./index.js`
+  1. **Most importantly:** Copy and paste firebase db config into `./index.js`
 
   2. Make sure to set firebase read/write rules to `true` in your firebase dashboard.
   ```json
@@ -21,7 +21,7 @@
 
 ***
 
-#### Setup
+### Setup
 
 1. Clone the repo
 ```sh
