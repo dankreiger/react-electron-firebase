@@ -1,6 +1,7 @@
 /* bs overrides */
 
 .todoInput {
+  display: flex;
   margin-bottom: 2rem;
 }
 
