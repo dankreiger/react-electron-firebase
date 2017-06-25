@@ -10,37 +10,37 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = {speed: 10, todos: [], inputValue: ''};
+    this.state = {counter: 10, todos: [], inputValue: ''};
 
-    this.addSpeed = this.addSpeed.bind(this);
-    this.subtractSpeed = this.subtractSpeed.bind(this);
+    this.addCounter = this.addCounter.bind(this);
+    this.subtractCounter = this.subtractCounter.bind(this);
 
     this.rootRef = firebase.database().ref();
-    this.speedRef = this.rootRef.child('speed');
+    this.counterRef = this.rootRef.child('counter');
     this.todosRef = this.rootRef.child('todos')
   }
 
   componentDidMount() {
     this.rootRef.on('value', snap => {
-      this.setState({speed: snap.child('speed').val()});
+      this.setState({counter: snap.child('counter').val()});
       this.setState({todos: snap.child('todos').val() || []});
     });
   }
 
   // these methods are messy, but you can refactor everything into subcomponents
 
-  addSpeed() {
-    this.speedRef.set(this.state.speed + 1);
+  addCounter() {
+    this.counterRef.set(this.state.counter + 1);
   }
 
-  subtractSpeed() {
-    this.speedRef.set(this.state.speed - 1);
+  subtractCounter() {
+    this.counterRef.set(this.state.counter - 1);
   }
 
   addTodo(val) {
     const todo = {text: val, checked: false}
     this.state.todos.push(todo);
-    this.rootRef.set({todos: this.state.todos, speed: this.state.speed});
+    this.rootRef.set({todos: this.state.todos, counter: this.state.counter});
     this.setState({inputValue: ''});
   }
 
@@ -55,7 +55,7 @@ class App extends Component {
     const remainder = this.state.todos.filter((todo) => {
       if(i !== this.state.todos.indexOf(todo)) return todo;
     });
-    this.rootRef.set({todos: remainder, speed: this.state.speed});
+    this.rootRef.set({todos: remainder, counter: this.state.counter});
   }
 
   updateInputValue(evt) {
@@ -78,13 +78,16 @@ class App extends Component {
     return (
       <div className="App container">
         <div className="row well">
+          <h1>Something</h1>
+        </div>
+        <div className="row jumbotron counter">
           <div className="col-md-3">
-            <p className="lead">{this.state.speed}</p>
+            <p className="lead">{this.state.counter}</p>
           </div>
           <div className="col-md-3">
             <div className="btn-group">
-              <button className="btn btn-danger" onClick={this.subtractSpeed}>-</button>
-              <button className="btn btn-success" onClick={this.addSpeed}>+</button>
+              <button className="btn btn-danger" onClick={this.subtractCounter}>-</button>
+              <button className="btn btn-success" onClick={this.addCounter}>+</button>
             </div>
           </div>
         </div>

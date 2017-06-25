@@ -1,0 +1,17 @@
+.row {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.75rem;
+}
+
+label {
+  flex-basis: 70%;
+}
+
+button {
+  flex-basis: 10%;
+}
+
+.form-control, .btn {
+  border-radius: 0;
+}

@@ -1,3 +1,22 @@
+/* bs overrides */
+
 .todoInput {
   margin-bottom: 2rem;
+}
+
+h1 {
+  margin: 0 auto;
+}
+
+.container .well, .container .jumbotron {
+  border-radius: 0;
+}
+
+.jumbotron p {
+  margin-bottom: 0;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
 }
